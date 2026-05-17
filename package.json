@@ -1,6 +1,6 @@
 {
   "name": "cleaner-errors",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Human-readable error messages for Zod, Prisma, tRPC and more — drop-in CLI wrapper for Node.js and TypeScript projects",
   "type": "module",
   "bin": {
