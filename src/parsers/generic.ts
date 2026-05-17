@@ -12,14 +12,14 @@ const PATTERNS: GenericPattern[] = [
     match: /Cannot read propert(?:y|ies) of (undefined|null) \(reading '(.+?)'\)/,
     what: ([, nullish, prop]) =>
       `You called .${prop} on a value that was ${nullish} at runtime. The variable wasn't populated before you used it.`,
-    fix: `Add a null guard:\nconst value = data?.${`<prop>`} ?? <fallback>;\n// or check before use:\nif (!data) throw new Error("data is missing");`,
+    fix: `Add a null guard:\nconst value = data?.<prop> ?? <fallback>;\n// or check before use:\nif (!data) throw new Error("data is missing");`,
     docs: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Cant_access_property",
   },
   {
     match: /(\w+) is not a function/,
     what: ([, name]) =>
       `"${name}" is not a function at this point — it may be undefined, null, or a different type than expected.`,
-    fix: `Check what "${`<name>`}" resolves to at runtime:\nconsole.log(typeof ${`<name>`}); // should be "function"`,
+    fix: `Check what "<name>" resolves to at runtime:\nconsole.log(typeof <name>); // should be "function"`,
     docs: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Not_a_function",
   },
   {
@@ -33,8 +33,15 @@ const PATTERNS: GenericPattern[] = [
     match: /Maximum call stack size exceeded/,
     what: () =>
       "A function is calling itself recursively without ever hitting a base case, causing a stack overflow.",
-    fix: `Find the recursive function and add a termination condition:\nfunction recurse(n) {\n  if (n <= 0) return; // ← base case\n  recurse(n - 1);\n}`,
+    fix: `Find the recursive function and add a termination condition:\nfunction recurse(n) {\n  if (n <= 0) return; // base case\n  recurse(n - 1);\n}`,
     docs: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Too_much_recursion",
+  },
+  {
+    match: /Cannot find module '(.+?)'/,
+    what: ([, mod]) =>
+      `Node can't find the module "${mod}". Either the file doesn't exist at that path, or the package isn't installed.`,
+    fix: `If it's a local file, check the path is correct:\n  node <correct-path>.js\n\nIf it's a package:\n  npm install <package-name>`,
+    docs: "https://nodejs.org/api/errors.html#module_not_found",
   },
 ];
 
@@ -77,7 +84,6 @@ function extractLocationFromStack(stack?: string): string[] {
       !l.includes("node:internal")
   );
   if (!appLine) return [];
-  // Extract "file.ts:line:col" from the stack frame
   const match = appLine.match(/\((.+?:\d+:\d+)\)/) ?? appLine.match(/at (.+?:\d+:\d+)/);
   return match ? [match[1].replace(process.cwd() + "/", "")] : [];
 }

@@ -4,7 +4,7 @@
   "description": "Human-readable error messages for Zod, Prisma, tRPC and more — drop-in CLI wrapper for Node.js and TypeScript projects",
   "type": "module",
   "bin": {
-    "cleaner-errors": "./dist/cli.js"
+    "cleaner-errors": "dist/cli.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -33,7 +33,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_USERNAME/cleaner-errors"
+    "url": "git+https://github.com/YOUR_USERNAME/cleaner-errors.git"
   },
   "homepage": "https://github.com/YOUR_USERNAME/cleaner-errors#readme",
   "bugs": {
