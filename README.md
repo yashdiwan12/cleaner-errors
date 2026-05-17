@@ -38,9 +38,9 @@ ZodError: [
 **After** — what you actually need:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- Zod  ZodError
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ 📦 Zod  ›  ZodError
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 What went wrong
   2 fields failed validation:
@@ -52,10 +52,12 @@ Affected field(s)
   ◆ user.password
 
 Suggested fix
-  Make sure your input includes all required fields:
+  Make sure your input payload includes all required properties:
   user.email: <valid value>
 
-docs → zod.dev/ERROR_HANDLING
+Documentation
+  → [https://zod.dev/ERROR_HANDLING](https://zod.dev/ERROR_HANDLING)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 Same error. Ten seconds instead of ten minutes.
@@ -192,7 +194,7 @@ export function parseMyLibraryError(err: unknown): EnhancedError {
 Register it in `src/index.ts` and you're done.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/cleaner-errors
+git clone https://github.com/yashdiwan12/cleaner-errors
 cd cleaner-errors
 npm install
 npm run dev
