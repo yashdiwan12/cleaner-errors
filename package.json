@@ -1,0 +1,54 @@
+{
+  "name": "cleaner-errors",
+  "version": "0.1.0",
+  "description": "Human-readable error messages for Zod, Prisma, tRPC and more — drop-in CLI wrapper for Node.js and TypeScript projects",
+  "type": "module",
+  "bin": {
+    "cleaner-errors": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/cli.js",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "error",
+    "errors",
+    "zod",
+    "prisma",
+    "trpc",
+    "typescript",
+    "dx",
+    "debugging",
+    "developer-experience",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/cleaner-errors"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/cleaner-errors#readme",
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/cleaner-errors/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "execa": "^8.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
